@@ -1,0 +1,19 @@
+COPA DOS CAMPEÕES 2026 — ATUALIZAÇÃO VISUAL
+
+Inclui:
+- Identidade visual em preto e azul.
+- Símbolo da competição em SVG incorporado ao cabeçalho.
+- Página inicial reorganizada: clubes, classificação resumida e últimos resultados.
+- Removido o modal antigo "Fazer oferta pelo jogador" que aparecia no rodapé.
+- Removido o aviso antigo de que a sincronização online seria implementada posteriormente.
+- Mantidos os scripts de login, Supabase e Draft existentes no pacote de origem.
+
+PUBLICAÇÃO NA VERCEL
+1. Faça backup da versão atual.
+2. Extraia o ZIP.
+3. Publique o conteúdo da pasta, mantendo index.html na raiz do projeto.
+4. Teste login, Draft online, lista de jogadores e histórico.
+5. Não execute novamente o SQL de configuração do Draft; ele está incluído apenas como referência/instalação inicial.
+
+OBSERVAÇÃO
+Esta atualização do arquivo HTML foi validada quanto à sintaxe JavaScript, mas precisa ser testada na implantação real com a configuração Supabase do projeto.
