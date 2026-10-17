@@ -2134,8 +2134,6 @@ function renderStandings(){
 function renderHomeMatches(){
   const upcoming=document.getElementById("homeUpcoming");
   const results=document.getElementById("homeResults");
-  // A página pode não ter os blocos de partidas da tela inicial.
-  // Se ambos estiverem ausentes, não há nada para renderizar.
   if(!upcoming && !results) return;
   const club=(id)=>db.teams.find(t=>t.id===id);
   const card=(m)=> {
@@ -2195,6 +2193,21 @@ function renderFootballManagerRail(){
  document.getElementById("fmRosterSummary").innerHTML=`<div class="fm-info-line"><span>Elenco principal</span><b>${(team.players||[]).length}</b></div><div class="fm-info-line"><span>Titulares escalados</span><b>${lineupFor(team).slots.filter(Boolean).length}/11</b></div><div class="fm-info-line"><span>Formação</span><b>${escapeHTML(lineupFor(team).formation||'4-3-3')}</b></div>`;
  const next=document.getElementById("fmNextMatch");if(next)next.innerHTML='<div style="font-weight:700;color:#e8f2ff">Aguardando calendário</div><div style="font-size:12px;margin-top:5px">Os confrontos cadastrados aparecerão aqui.</div>';
 }
+
+// Compatibilidade para chamadas antigas em updateAll().
+// O catálogo de mercado online é gerenciado por loadOnlineFreeCatalog().
+function renderPlayerCatalog(){
+  const root = document.getElementById("playerCatalog");
+  if(!root) return;
+  if(typeof OFFICIAL_PLAYER_POOL === "undefined" || !Array.isArray(OFFICIAL_PLAYER_POOL)){
+    root.innerHTML = '<div class="empty">Catálogo local indisponível. O catálogo online será carregado quando a conexão estiver pronta.</div>';
+    return;
+  }
+  root.innerHTML = OFFICIAL_PLAYER_POOL.length
+    ? OFFICIAL_PLAYER_POOL.map(p => `<div class="catalog-player-row"><strong>${escapeHTML(p.name||"Jogador")}</strong><div class="muted">${escapeHTML(p.position||"A definir")} · OVR ${escapeHTML(String(p.overall??"—"))}</div></div>`).join("")
+    : '<div class="empty">Nenhum jogador no catálogo local.</div>';
+}
+
 function updateAll(){fillTeamSelects();renderPitch();renderHome();renderHomeMatches();renderRoster();renderPlayerCatalog();if(window.copaAuth?.supabase)loadOnlineFreeCatalog();renderMatches();renderStandings();renderCalendar();renderCoachAdmin();renderCompetitionStats();renderFootballManagerRail();}
 
 document.getElementById("formationPreview").addEventListener("change",e=>{const t=selectedTeam();if(!t)return;lineupFor(t).formation=e.target.value;markLineupDirty();renderPitch();});
