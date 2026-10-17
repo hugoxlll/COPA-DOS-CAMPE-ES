@@ -818,12 +818,6 @@ table{width:100%;border-collapse:collapse}td,th{vertical-align:middle}
 @media(max-width:900px){.app-shell{grid-template-columns:minmax(0,1fr)}#sidebar{position:sticky;top:0;height:auto;max-height:none;overflow:visible;border-right:0;border-bottom:1px solid var(--line)!important;padding:6px 8px;background:#080d18}#nav{flex-direction:row;overflow-x:auto;overflow-y:hidden;gap:5px;padding:2px 0 6px;scrollbar-width:thin}#nav button{width:auto;min-width:max-content;white-space:nowrap;padding:9px 11px}main{padding:16px}}
 @media(max-width:560px){main{padding:11px}.panel,.team,.item,.pitch-panel{padding:12px}.section-heading{gap:8px;flex-wrap:wrap}table{font-size:12px}#times .pitch-panel{grid-template-columns:minmax(0,1fr)!important}#times #tacticalPitch{width:100%!important;max-width:100%!important;min-height:600px!important;height:auto!important}#times #benchList{grid-template-columns:repeat(2,minmax(0,1fr))!important;max-height:none!important;overflow:visible!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
-
-/* IDENTIDADE VISUAL COPA DOS CAMPEÕES: preto, azul elétrico e dourado do escudo */
-:root{--bg:#030609;--panel:#080d14;--line:#174a7d;--purple:#087cff;--lilac:#67b7ff;--blue:#086bff;--cyan:#31baff;--gold:#e9c56b}
-header{background:linear-gradient(110deg,#030609 0%,#071326 65%,#0a2040 100%);border-bottom-color:#c6a34b}
-.brand-mark{background:radial-gradient(circle,#f3d36a,#9a6b16)!important;color:#071326!important;border:2px solid #d7b65c!important;box-shadow:0 0 22px #e4b84b22!important}
-button.primary,.primary,nav button.active{background:linear-gradient(120deg,#1264ff,#0844bb);border-color:#3185ff}
 </style>
 </head>
 <body>
@@ -853,16 +847,16 @@ button.primary,.primary,nav button.active{background:linear-gradient(120deg,#126
   <div class="brand-row">
     <div class="brand-mark" aria-label="Símbolo oficial Copa dos Campeões 2026">
       <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
-        <defs><linearGradient id="cupBlue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8bd5ff"/><stop offset=".48" stop-color="#1685ff"/><stop offset="1" stop-color="#0750b8"/></linearGradient></defs>
-        <g fill="#d8efff">
-          <path d="M9 8l1.7 4.2L15 14l-4.3 1.7L9 20l-1.7-4.3L3 14l4.3-1.8z"/>
-          <path d="M53 7l1.5 3.5L58 12l-3.5 1.5L53 17l-1.5-3.5L48 12l3.5-1.5z"/>
-          <path d="M49 24l1.2 2.8L53 28l-2.8 1.2L49 32l-1.2-2.8L45 28l2.8-1.2z"/>
+        <defs><linearGradient id="cupBlue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5fbff"/><stop offset=".42" stop-color="#65c7ff"/><stop offset="1" stop-color="#087cff"/></linearGradient></defs>
+        <g fill="none" stroke="#dff4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="32" cy="20" r="16" stroke="#168bff" stroke-width="2.5"/>
+          <path d="M19 9l4 4m-7 5 5 1m2-12 2 5m8-5-1 6m8-3-4 5m10 4-6 1m-27 7 6-2m21 2-6-2"/>
+          <path d="M32 4l3.2 6.4 7.1 1-5.1 5 1.2 7.1-6.4-3.4-6.4 3.4 1.2-7.1-5.1-5 7.1-1z" fill="#eaf7ff" stroke="#8bd5ff" stroke-width="1.2"/>
+          <path d="M21 28h22l-2 12c-1.1 6-5.1 9-9 9s-7.9-3-9-9z" fill="url(#cupBlue)" stroke="#bfeaff"/>
+          <path d="M21 31H12v4c0 6 4 9 11 9M43 31h9v4c0 6-4 9-11 9" stroke="#58baff" stroke-width="3"/>
+          <path d="M28 49h8v5h-8zM23 54h18v4H23z" fill="#168bff" stroke="#bfeaff"/>
+          <path d="M27 35l2-3 3 2 3-2 2 3-2 2 1 3-4-1-4 1 1-3z" fill="#fff" stroke="#fff" stroke-width=".8"/>
         </g>
-        <path d="M18 15h28v7c0 11-5.4 18-14 20-8.6-2-14-9-14-20z" fill="url(#cupBlue)" stroke="#a8dcff" stroke-width="1.5"/>
-        <path d="M18 19H9v4c0 8 4.4 12 13 13M46 19h9v4c0 8-4.4 12-13 13" fill="none" stroke="#43aaff" stroke-width="4" stroke-linecap="round"/>
-        <path d="M28 42h8v7h-8zM22 49h20v5H22z" fill="#1685ff" stroke="#a8dcff" stroke-width="1"/>
-        <path d="M32 19l2.2 4.6 5.1.7-3.7 3.6.9 5.1-4.5-2.4-4.5 2.4.9-5.1-3.7-3.6 5.1-.7z" fill="#fff"/>
       </svg>
     </div>
     <div class="brand-copy">
@@ -1025,6 +1019,20 @@ button.primary,.primary,nav button.active{background:linear-gradient(120deg,#126
 <section id="negociacoes" class="page hidden">
   <div class="section-heading"><div><span class="eyebrow">MERCADO ENTRE CLUBES</span><h2>Negociações e propostas</h2></div><span class="badge">Jogadores contratados</span></div>
   <p class="muted">Aqui aparecem jogadores que já pertencem a outros clubes. Envie propostas de dinheiro, troca de jogadores ou ambas. Jogadores do seu próprio elenco não podem ser alvo de proposta contra seu próprio clube.</p>
+  <div class="panel" id="transferMarketControlPanel" style="margin-top:18px">
+    <div class="section-heading"><div><span class="eyebrow">CONTROLE DO MERCADO</span><h3>Janela de transferências</h3></div><span class="badge" id="transferMarketStatusBadge">Consultando status…</span></div>
+    <p class="muted" id="transferMarketStatusText">O mercado só poderá ser usado depois que o draft for encerrado e o administrador o ativar.</p>
+    <div id="transferMarketAdminControls" class="row hidden">
+      <button class="primary" id="transferMarketToggleBtn" type="button" onclick="toggleTransferMarket()">Ativar mercado</button>
+      <span class="muted">Este controle aparece apenas para o administrador.</span>
+    </div>
+  </div>
+  <div class="panel" id="freeAgentsPanel" style="margin-top:18px">
+    <div class="section-heading"><div><span class="eyebrow">JOGADORES LIVRES</span><h3>Disponíveis após o Draft</h3></div><button class="secondary small" type="button" onclick="loadTransferMarket()">Atualizar</button></div>
+    <p class="muted">Jogadores não escolhidos no draft ficam listados aqui, mas só podem ser contratados quando o draft estiver encerrado e o administrador abrir o mercado.</p>
+    <div id="freeAgentsMessage" class="notice">Consultando jogadores livres…</div>
+    <div id="freeAgentsList" class="grid" style="margin-top:12px"></div>
+  </div>
   <div class="panel" id="managedTransferPanel" style="margin-top:18px">
     <div class="section-heading"><div><span class="eyebrow">NEGOCIAÇÃO ENTRE CLUBES</span><h2>Ofertas por jogadores de outros clubes</h2></div><button class="secondary" type="button" onclick="loadTransferMarket()">Atualizar</button></div>
     <p class="muted">Faça uma proposta por um jogador que pertence a outro clube. Você pode oferecer dinheiro, um jogador do seu elenco ou combinar dinheiro + jogador. O clube de origem e o seu clube são identificados automaticamente; não existe seletor de clube.</p>
@@ -1161,18 +1169,6 @@ button.primary,.primary,nav button.active{background:linear-gradient(120deg,#126
     <label for="draftPoolJson">Jogadores disponíveis (JSON)</label><textarea id="draftPoolJson" rows="5" placeholder='[{"id":"p1","name":"Jogador","position":"MC","overall":75}]'></textarea>
     <label for="draftTeamOrder" style="display:block;margin-top:10px">Ordem dos clubes (IDs Supabase separados por vírgula)</label><input id="draftTeamOrder" placeholder="id-clube-1, id-clube-2, ...">
     <div class="row" style="margin-top:12px"><label>Limite por clube <input id="draftPicksPerTeam" type="number" min="17" max="17" value="17" style="width:90px" readonly></label><button type="button" class="primary" onclick="saveDraftConfig()">Salvar configuração</button><button type="button" class="secondary" onclick="setDraftStatus('active')">Iniciar / retomar</button><button type="button" class="secondary" onclick="setDraftStatus('paused')">Pausar</button><button type="button" class="danger" onclick="setDraftStatus('finished')">Encerrar</button></div>
-    <div class="row" style="margin-top:12px;align-items:stretch">
-      <button type="button" class="danger" onclick="resetOnlineDraft()">RESETAR DRAFT</button>
-    </div>
-    <div class="panel" style="margin-top:14px">
-      <h3>Adicionar jogador ao catálogo</h3>
-      <p class="muted">O jogador será cadastrado em market_players e ficará disponível para inclusão no draft/mercado. Este cadastro não atribui o jogador a um clube.</p>
-      <form id="adminNewPlayerForm" onsubmit="addAdminMarketPlayer(event)">
-        <div class="row"><div><label for="newMarketPlayerName">Nome do jogador</label><input id="newMarketPlayerName" required maxlength="100" placeholder="Nome completo"></div><div><label for="newMarketPlayerPosition">Posição</label><select id="newMarketPlayerPosition" required><option value="GOL">GOL</option><option value="LD">LD</option><option value="LE">LE</option><option value="ZAG">ZAG</option><option value="ZD">ZD</option><option value="VOL">VOL</option><option value="MC">MC</option><option value="MEI">MEI</option><option value="PE">PE</option><option value="PD">PD</option><option value="SA">SA</option><option value="ATA">ATA</option></select></div><div><label for="newMarketPlayerOverall">Overall</label><input id="newMarketPlayerOverall" type="number" required min="1" max="99" value="75"></div></div>
-        <button type="submit" class="primary">Cadastrar jogador</button>
-      </form>
-      <div id="adminNewPlayerMessage" class="muted" role="status" style="margin-top:8px"></div>
-    </div>
     <div id="draftAdminMessage" class="muted" role="status" style="margin-top:10px"></div>
   </div>
 </section>
@@ -1231,17 +1227,8 @@ function persist(){
   try{
     localStorage.setItem(APPKEY,JSON.stringify(db));
     localStorage.setItem(KEY,JSON.stringify(db.teams));
-  }catch(e){
-    console.error("Falha real ao gravar no armazenamento local:",e);
-    alert("Não foi possível gravar os dados no navegador. Exporte um backup e confira o armazenamento disponível.");
-    return;
-  }
-  try{
     updateAll();
-  }catch(e){
-    console.error("Os dados foram gravados, mas a interface falhou ao atualizar:",e);
-    alert("Os dados foram salvos, mas uma parte da tela não atualizou. Consulte o Console.");
-  }
+  }catch(e){alert("Não foi possível salvar. Verifique o espaço disponível no navegador.");}
 }
 
 const CLUB_CRESTS = {
@@ -1526,11 +1513,6 @@ function renderHome(){
 }
 function renderRoster(){
  const t=selectedTeam();
- // Jogadores escolhidos no Draft online são incorporados ao elenco usado pela escalação.
- if(t && Array.isArray(window.copaOnlineDraftPicks)){
-   const online=window.copaOnlineDraftPicks.filter(p=>String(p.club_id)===String(t.id));
-   for(const p of online){if(!t.players.some(x=>String(x.id)===String(p.player_id)||String(x.draftPickId)===String(p.id))){t.players.push({id:String(p.player_id),draftPickId:String(p.id),name:p.player_name,position:p.position||'A definir',overall:String(p.overall??''),draftOnline:true});}}
- }
  renderAssignedTeamInfo();
  if(!t){
    const roster=document.getElementById("roster");if(roster)roster.innerHTML='<div class="empty">Seu elenco ficará disponível quando o administrador atribuir um clube à sua conta.</div>';
@@ -1650,52 +1632,6 @@ function teamForClubId(clubId){
  const map={"barcelona":"Barcelona","real-madrid":"Real Madrid","bayern-de-munique":"Bayern de Munique","borussia-dortmund":"Borussia Dortmund","chelsea":"Chelsea","arsenal":"Arsenal","manchester-city":"Manchester City","manchester-united":"Manchester United","psg":"PSG","liverpool":"Liverpool"};
  const name=map[String(clubId).toLowerCase()];
  return db.teams.find(t=>t.id===clubId || (name && t.name===name)) || null;
-}
-function syncDraftPicksIntoLocalRosters(){
- const picks=Array.isArray(window.copaOnlineDraftPicks)?window.copaOnlineDraftPicks:[];
- const clubNames={"barcelona":"Barcelona","real-madrid":"Real Madrid","bayern-de-munique":"Bayern de Munique","borussia-dortmund":"Borussia Dortmund","chelsea":"Chelsea","arsenal":"Arsenal","manchester-city":"Manchester City","manchester-united":"Manchester United","psg":"PSG","liverpool":"Liverpool"};
- const normalizeName=value=>String(value||"").trim().toLocaleLowerCase("pt-BR").normalize("NFD").replace(/[\\u0300-\\u036f]/g,"");
- // Remove only previous temporary mirrors; then deduplicate existing local rosters by player name.
- for(const team of (db.teams||[])){
-   const seen=new Set();
-   team.players=(team.players||[]).filter(p=>{
-     if(p.onlineDraftPick)return false;
-     const key=normalizeName(p.name);
-     if(!key)return true;
-     if(seen.has(key))return false;
-     seen.add(key);
-     return true;
-   });
- }
- for(const pick of picks){
-   const clubId=String(pick.club_id||'').toLowerCase();
-   const teamName=clubNames[clubId] || (window.copaOnlineDraftClubNames||{})[String(pick.club_id)] || '';
-   const team=(db.teams||[]).find(t=>String(t.id)===String(pick.club_id) || normalizeName(t.name)===normalizeName(teamName));
-   if(!team) continue;
-   team.players=team.players||[];
-   const playerName=String(pick.player_name||"").trim();
-   if(!playerName)continue;
-   const key=normalizeName(playerName);
-   // If the player already exists in the club's normal roster, reuse that entry instead of adding a duplicate.
-   const existing=team.players.find(p=>normalizeName(p.name)===key);
-   if(existing){
-     existing.position=existing.position||pick.position||'—';
-     existing.overall=existing.overall??String(pick.overall??'');
-     existing.draftPick=true;
-     existing.draftPickId=pick.id;
-     continue;
-   }
-   team.players.push({
-     id:'draft:'+String(pick.player_id),
-     name:playerName,
-     position:pick.position||'—',
-     overall:String(pick.overall??''),
-     onlineDraftPick:true,
-     draftPick:true,
-     draftPickId:pick.id
-   });
- }
- try{persist();}catch(e){console.warn('Não foi possível persistir o espelhamento do draft:',e);}
 }
 function selectedTeam(){
  const profile=window.copaAuth?.profile;
@@ -2010,6 +1946,78 @@ function resetLineup(){
  const l=lineupFor(team);l.slots=Array(11).fill("");l.captain="";l.setPieces={};l.saved=false;lineupDirty=true;renderPitch();
 }
 
+
+let transferMarketOpen = false;
+let transferDraftFinished = false;
+let transferFreeAgents = [];
+
+function renderTransferMarketGate(){
+ const auth=window.copaAuth, badge=document.getElementById('transferMarketStatusBadge');
+ const text=document.getElementById('transferMarketStatusText');
+ const controls=document.getElementById('transferMarketAdminControls');
+ const btn=document.getElementById('transferMarketToggleBtn');
+ if(!badge||!text||!controls||!btn)return;
+ const admin=auth?.profile?.role==='admin'&&auth?.profile?.status==='active';
+ controls.classList.toggle('hidden',!admin);
+ const allowed=transferDraftFinished&&transferMarketOpen;
+ badge.textContent=allowed?'MERCADO ABERTO':(!transferDraftFinished?'AGUARDANDO FIM DO DRAFT': 'MERCADO FECHADO');
+ badge.style.color=allowed?'#19e68c':'#ffc928';
+ text.textContent=!transferDraftFinished
+  ?'O draft ainda não foi encerrado. Os jogadores não escolhidos ficam bloqueados até o fim do draft.'
+  :transferMarketOpen
+   ?'Mercado aberto: treinadores podem contratar jogadores livres e negociar jogadores entre clubes.'
+   :'Draft encerrado. Os jogadores livres estão visíveis, mas as contratações e negociações estão bloqueadas até o administrador abrir o mercado.';
+ btn.textContent=transferMarketOpen?'Fechar mercado':'Ativar mercado';
+ btn.disabled=!transferDraftFinished;
+}
+async function loadTransferMarketGate(auth){
+ const msg=document.getElementById('freeAgentsMessage');
+ try{
+  const [settingsRes,draftRes,picksRes,playersRes,squadRes]=await Promise.all([
+   auth.supabase.from('transfer_market_settings').select('is_open').eq('id',1).maybeSingle(),
+   auth.supabase.from('draft_sessions').select('status,player_pool').eq('id',1).maybeSingle(),
+   auth.supabase.from('draft_picks').select('player_id'),
+   auth.supabase.from('market_players').select('id,name,position,overall,minimum_price,status').eq('status','available').order('overall',{ascending:false}),
+   auth.supabase.from('club_squad_players').select('player_id')
+  ]);
+  for(const r of [settingsRes,draftRes,picksRes,playersRes,squadRes])if(r.error)throw r.error;
+  transferMarketOpen=!!settingsRes.data?.is_open;
+  transferDraftFinished=draftRes.data?.status==='finished';
+  const picked=new Set((picksRes.data||[]).map(p=>String(p.player_id)));
+  const rostered=new Set((squadRes.data||[]).map(p=>String(p.player_id)));
+  const pool=Array.isArray(draftRes.data?.player_pool)?draftRes.data.player_pool:[];
+  const poolIds=new Set(pool.map(p=>String(p.id)));
+  transferFreeAgents=(playersRes.data||[]).filter(p=>!picked.has(String(p.id))&&!rostered.has(String(p.id))&&(!poolIds.size||poolIds.has(String(p.id))));
+  renderTransferMarketGate();
+  const list=document.getElementById('freeAgentsList');
+  const canBuy=transferDraftFinished&&transferMarketOpen&&!!auth.profile?.club_id;
+  if(msg)msg.textContent=!transferDraftFinished?'Bloqueado até o administrador encerrar o draft.':transferMarketOpen?`${transferFreeAgents.length} jogador(es) livre(s) disponível(is).`:'O draft terminou; aguardando o administrador ativar o mercado.';
+  if(list)list.innerHTML=transferFreeAgents.length?transferFreeAgents.map(p=>`<div class="item"><strong>${escapeHTML(p.name)}</strong><div class="muted">${escapeHTML(p.position||'A definir')} · OVR ${Number(p.overall||0)}</div><div style="margin:8px 0">Preço mínimo: <strong>€${Number(p.minimum_price||0).toLocaleString('pt-BR')}M</strong></div><button type="button" class="primary small" ${canBuy?'':'disabled'} onclick="buyFreeAgent('${String(p.id).replace(/'/g,'')}')">Contratar jogador</button></div>`).join(''):'<div class="empty">Nenhum jogador livre encontrado. Depois do draft, os não selecionados aparecerão aqui.</div>';
+ }catch(e){
+  renderTransferMarketGate();
+  if(msg)msg.textContent='Não foi possível carregar o status do mercado. Execute a migração SQL que acompanha esta versão. Detalhe: '+(e.message||'erro no Supabase');
+  const list=document.getElementById('freeAgentsList');if(list)list.innerHTML='';
+ }
+}
+window.toggleTransferMarket=async function(){
+ const auth=window.copaAuth;if(!auth?.supabase||auth.profile?.role!=='admin'||auth.profile?.status!=='active')return alert('Somente o administrador pode controlar o mercado.');
+ if(!transferDraftFinished)return alert('Encerre o draft antes de ativar o mercado.');
+ const next=!transferMarketOpen;
+ if(!confirm(next?'Ativar o mercado de transferências para todos os treinadores?':'Fechar o mercado e bloquear novas negociações?'))return;
+ const {error}=await auth.supabase.rpc('set_transfer_market_status',{p_is_open:next});
+ if(error)return alert('Não foi possível alterar o mercado: '+error.message+'. Confira se executou a migração SQL.');
+ transferMarketOpen=next;renderTransferMarketGate();await loadTransferMarket();
+};
+window.buyFreeAgent=async function(playerId){
+ const auth=window.copaAuth;if(!auth?.supabase||!auth.profile?.club_id)return alert('Entre na conta vinculada ao seu clube.');
+ if(!transferDraftFinished||!transferMarketOpen)return alert('O mercado está fechado.');
+ const p=transferFreeAgents.find(x=>String(x.id)===String(playerId));if(!p)return alert('Jogador livre não encontrado.');
+ if(!confirm(`Contratar ${p.name} por €${Number(p.minimum_price||0)}M?`))return;
+ const {error}=await auth.supabase.rpc('purchase_free_agent',{p_player_id:String(playerId)});
+ if(error)return alert('A contratação não foi concluída: '+error.message+'. Confira a migração SQL e o orçamento do clube.');
+ alert(`${p.name} foi contratado!`);await loadTransferMarket();
+};
+
 async function loadTransferMarket(){
  const msg=document.getElementById('transferMarketMessage'),target=document.getElementById('transferTargetPlayer'),offered=document.getElementById('transferOfferedPlayer');
  if(!msg||!target||!offered)return;
@@ -2018,6 +2026,7 @@ async function loadTransferMarket(){
   msg.textContent='Entre em uma conta ativa conectada ao Supabase para negociar jogadores de elencos online.';target.innerHTML='<option value="">Login necessário</option>';offered.innerHTML='<option value="">Login necessário</option>';return;
  }
  if(!auth.profile.club_id){msg.textContent='Seu clube ainda não foi atribuído pelo administrador. Você pode consultar a página, mas não enviar propostas.';target.innerHTML='<option value="">Aguardando clube atribuído</option>';offered.innerHTML='<option value="">Aguardando clube atribuído</option>';return;}
+ await loadTransferMarketGate(auth);
  msg.textContent='Atualizando elencos e propostas…';
  try{
   const [{data:squad,error:squadErr},{data:clubs,error:clubsErr},{data:offers,error:offersErr}]=await Promise.all([
@@ -2093,13 +2102,14 @@ document.getElementById('transferTargetPlayer')?.addEventListener('change',updat
 document.getElementById('transferOfferedPlayer')?.addEventListener('change',updateTransferOfferPreview);
 document.getElementById('transferCashAmount')?.addEventListener('input',updateTransferOfferPreview);
 document.getElementById('transferOfferForm')?.addEventListener('submit',async e=>{
- e.preventDefault();const auth=window.copaAuth;if(!auth?.supabase){alert('O mercado entre clubes exige conexão com o Supabase.');return;}
+ e.preventDefault();const auth=window.copaAuth;if(!auth?.supabase){alert('O mercado entre clubes exige conexão com o Supabase.');return;}if(!transferDraftFinished||!transferMarketOpen){alert('O mercado de transferências está fechado. O administrador precisa encerrar o draft e ativar o mercado.');return;}
  const targetId=document.getElementById('transferTargetPlayer').value,offeredId=document.getElementById('transferOfferedPlayer').value||null,cash=Number(document.getElementById('transferCashAmount').value||0),btn=document.getElementById('sendTransferOfferBtn');
  if(!targetId){alert('Selecione o jogador que deseja contratar.');return;}if(!Number.isInteger(cash)||cash<0){alert('O valor em dinheiro precisa ser um número inteiro igual ou maior que zero.');return;}if(cash===0&&!offeredId){alert('Inclua dinheiro, um jogador ou ambos na proposta.');return;}if(offeredId===targetId){alert('Não é possível oferecer o mesmo jogador que deseja contratar.');return;}
  btn.disabled=true;btn.textContent='Enviando proposta…';try{const {error}=await auth.supabase.rpc('create_club_transfer_offer',{p_target_player_id:targetId,p_cash_amount:cash,p_offered_player_id:offeredId});if(error)throw error;document.getElementById('transferCashAmount').value='0';document.getElementById('transferOfferedPlayer').value='';await loadTransferMarket();alert('Proposta enviada! O outro clube poderá aceitar ou recusar.');}catch(err){alert('A proposta não foi enviada: '+(err.message||'erro no mercado online'));}finally{btn.disabled=false;btn.textContent='Enviar proposta';}
 });
 async function respondTransferOffer(id,action){
  const auth=window.copaAuth;if(!auth?.supabase)return;
+ if(action!=='cancel'&&(!transferDraftFinished||!transferMarketOpen))return alert('O mercado está fechado; propostas não podem ser concluídas agora.');
  if(!['accept','reject','cancel'].includes(action)){alert('Ação de proposta inválida.');return;}
  const rpc=action==='cancel'?'cancel_club_transfer_offer':'respond_club_transfer_offer';
  const confirmation=action==='accept'?'Aceitar esta proposta? A transferência e a movimentação de dinheiro serão feitas juntas.':action==='reject'?'Recusar esta proposta? Os elencos e orçamentos não serão alterados.':'Cancelar sua proposta enviada?';
@@ -2174,7 +2184,6 @@ function renderStandings(){
 function renderHomeMatches(){
   const upcoming=document.getElementById("homeUpcoming");
   const results=document.getElementById("homeResults");
-  if(!upcoming && !results) return;
   const club=(id)=>db.teams.find(t=>t.id===id);
   const card=(m)=> {
     const h=club(m.home), a=club(m.away);
@@ -2188,9 +2197,9 @@ function renderHomeMatches(){
       </div>
     </div>`;
   };
-  if(upcoming) upcoming.innerHTML='<div class="empty">Nenhuma próxima partida foi agendada ainda.</div>';
-  const recent=[...(db.matches||[])].reverse().slice(0,3);
-  if(results) results.innerHTML=recent.length?recent.map(card).join(""):'<div class="empty">Ainda não há resultados registrados.</div>';
+  upcoming.innerHTML='<div class="empty">Nenhuma próxima partida foi agendada ainda.</div>';
+  const recent=[...db.matches].reverse().slice(0,3);
+  results.innerHTML=recent.length?recent.map(card).join(""):'<div class="empty">Ainda não há resultados registrados.</div>';
 }
 function exportBackup(){
  const payload={app:"Copa dos Campeões 2026",version:1,exportedAt:new Date().toISOString(),data:db};
@@ -2233,17 +2242,7 @@ function renderFootballManagerRail(){
  document.getElementById("fmRosterSummary").innerHTML=`<div class="fm-info-line"><span>Elenco principal</span><b>${(team.players||[]).length}</b></div><div class="fm-info-line"><span>Titulares escalados</span><b>${lineupFor(team).slots.filter(Boolean).length}/11</b></div><div class="fm-info-line"><span>Formação</span><b>${escapeHTML(lineupFor(team).formation||'4-3-3')}</b></div>`;
  const next=document.getElementById("fmNextMatch");if(next)next.innerHTML='<div style="font-weight:700;color:#e8f2ff">Aguardando calendário</div><div style="font-size:12px;margin-top:5px">Os confrontos cadastrados aparecerão aqui.</div>';
 }
-
-function renderPlayerCatalog(){
- const root=document.getElementById("playerCatalog");
- if(!root) return;
- const pool=Array.isArray(OFFICIAL_PLAYER_POOL)?OFFICIAL_PLAYER_POOL:[];
- root.innerHTML=pool.length
-   ? pool.map(p=>`<div class="catalog-player-row"><div><strong>${escapeHTML(p.name||"Jogador")}</strong><div class="muted">${escapeHTML(p.position||"A definir")} · OVR ${escapeHTML(String(p.overall??"—"))}</div></div></div>`).join("")
-   : '<div class="empty">Nenhum jogador no catálogo local.</div>';
-}
-
-function updateAll(){fillTeamSelects();renderPitch();renderHome();renderHomeMatches();renderRoster();renderPlayerCatalog();renderMatches();renderStandings();renderCalendar();renderCoachAdmin();renderCompetitionStats();renderFootballManagerRail();}
+function updateAll(){fillTeamSelects();renderPitch();renderHome();renderHomeMatches();renderRoster();renderPlayerCatalog();if(window.copaAuth?.supabase)loadOnlineFreeCatalog();renderMatches();renderStandings();renderCalendar();renderCoachAdmin();renderCompetitionStats();renderFootballManagerRail();}
 
 document.getElementById("formationPreview").addEventListener("change",e=>{const t=selectedTeam();if(!t)return;lineupFor(t).formation=e.target.value;markLineupDirty();renderPitch();});
 document.getElementById("seasonStart").value=new Date().toISOString().slice(0,10);
@@ -2418,121 +2417,26 @@ resumeRoundSimulation();
  #times #benchList .bench-card{flex-wrap:wrap!important}
 }
 @media(max-width:420px){#times #benchList{grid-template-columns:minmax(0,1fr)!important}}
-</style>
+<
 
-
-<style id="copa-bench-next-to-pitch">
-/* Layout simples: campo e banco visíveis lado a lado em telas grandes */
-#times .pitch-panel{
-  display:grid!important;
-  grid-template-columns:minmax(0,1fr) minmax(250px,300px)!important;
-  grid-template-rows:auto minmax(0,1fr) auto auto auto!important;
-  column-gap:16px!important;
-  row-gap:12px!important;
-  align-items:start!important;
-}
-#times .pitch-toolbar{
-  grid-column:1 / -1!important;
-  grid-row:1!important;
-  width:100%!important;
-}
-#times #tacticalPitch{
-  grid-column:1!important;
-  grid-row:2!important;
-  min-width:0!important;
-  width:100%!important;
-}
-#times .pitch-caption{
-  grid-column:1!important;
-  grid-row:3!important;
-  min-width:0!important;
-}
-#times .fm-club-rail{
-  grid-column:2!important;
-  grid-row:2!important;
-  width:100%!important;
-  min-width:0!important;
-  order:initial!important;
-}
-#times .pitch-panel>.section-heading[style*="margin-top:14px"]{
-  grid-column:2!important;
-  grid-row:3!important;
-  margin:0!important;
-  align-self:end!important;
-}
-#times #benchList{
-  grid-column:2!important;
-  grid-row:4!important;
-  display:flex!important;
-  flex-direction:column!important;
-  gap:8px!important;
-  width:100%!important;
-  min-width:0!important;
-  max-height:440px!important;
-  overflow-y:auto!important;
-  overflow-x:hidden!important;
-  padding:2px 4px 2px 0!important;
-  box-sizing:border-box!important;
-  align-content:start!important;
-}
-#times #benchList .bench-card{
-  width:100%!important;
-  min-width:0!important;
-  box-sizing:border-box!important;
-  flex-wrap:nowrap!important;
-  padding:8px!important;
-}
-#times #benchList .bench-board{
-  min-width:0!important;
-  max-width:none!important;
-  flex:1 1 auto!important;
-}
-#times #benchList .bench-board-name{
-  white-space:normal!important;
-  overflow-wrap:anywhere!important;
-}
-#times .pitch-help,
-#times .pitch-panel>.row{
-  grid-column:1 / -1!important;
-  grid-row:auto!important;
-  width:100%!important;
-}
-#times #benchList .bench-card button{
-  flex:0 0 auto!important;
-  white-space:nowrap!important;
-}
-@media(max-width:900px){
-  #times .pitch-panel{
-    display:flex!important;
-    flex-direction:column!important;
-    gap:12px!important;
-  }
-  #times .pitch-toolbar,
-  #times #tacticalPitch,
-  #times .pitch-caption,
-  #times .fm-club-rail,
-  #times .pitch-panel>.section-heading[style*="margin-top:14px"],
-  #times #benchList,
-  #times .pitch-help,
-  #times .pitch-panel>.row{
-    width:100%!important;
-    grid-column:auto!important;
-    grid-row:auto!important;
-    order:initial!important;
-    box-sizing:border-box!important;
-  }
-  #times #benchList{
-    display:grid!important;
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
-    max-height:none!important;
-    overflow:visible!important;
-  }
-  #times #benchList .bench-card{flex-wrap:wrap!important}
-}
-@media(max-width:440px){
-  #times #benchList{grid-template-columns:minmax(0,1fr)!important}
-}
-</style>
+/* TEMA OFICIAL FINAL — PRETO, AZUL ELÉTRICO E EMBLEMA DA COPA */
+:root{--purple-dark:#020408!important;--purple-deep:#050a12!important;--purple:#087cff!important;--lilac:#67b7ff!important;--bg:#030609!important;--panel:#080d14!important;--line:#174a7d!important;--muted:#a7b8cc!important;--text:#f4f8ff!important;--green:#19e68c!important;--blue:#087cff!important;--cyan:#31baff!important;--gold:#ffc928!important}
+html,body{background:#030609!important;color:#f4f8ff!important}
+header{background:linear-gradient(110deg,#020408 0%,#030914 52%,#071a35 100%)!important;border-bottom:1px solid #087cff!important}
+.brand-mark{width:54px!important;height:54px!important;display:grid!important;place-items:center!important;border-radius:14px!important;background:radial-gradient(circle at 35% 20%,#102b4b,#020408 75%)!important;border:1px solid #168bff!important;box-shadow:0 0 22px #087cff35!important;color:#fff!important}
+.brand-mark svg{width:48px!important;height:48px!important;display:block!important}
+.brand-copy h1{color:#f4f8ff!important;text-shadow:0 0 16px #087cff25!important}
+.brand-copy p{color:#67b7ff!important}
+aside.sidebar{background:#05080e!important;border-color:#174a7d!important}
+nav button{color:#bdcde0!important}nav button:hover,nav button.active,button.active{background:linear-gradient(110deg,#075dcc,#063a83)!important;border-color:#168bff!important;color:#fff!important}
+button,.primary,button.primary{background:#080f1a!important;border-color:#174a7d!important;color:#f4f8ff!important}
+button:hover{border-color:#168bff!important}button.primary,.primary{background:linear-gradient(110deg,#087cff,#0750b8)!important;border-color:#168bff!important;color:#fff!important}
+.panel,.item,.team,.match-card,.empty,.pitch-panel,.home-hero{background:linear-gradient(145deg,#090f18,#030609)!important;border-color:#174a7d!important}
+.home-hero{background:radial-gradient(ellipse at 90% 0%,#0a2342 0%,#070d16 42%,#030609 100%)!important}
+.badge,.notice{background:#071a2d!important;border-color:#174a7d!important;color:#bfe4ff!important}
+input,select,textarea{background:#050a12!important;border-color:#174a7d!important;color:#f4f8ff!important}
+:focus-visible{outline:2px solid #168bff!important;outline-offset:2px}
+/style>
 
 <script>
 (function(){
@@ -2554,7 +2458,7 @@ resumeRoundSimulation();
   ]);
   if(!clubsRes.error&&Array.isArray(clubsRes.data)){draftClubMap={};clubsRes.data.forEach(c=>draftClubMap[String(c.id)]={name:c.name,id:String(c.id)});}
   if(stateRes.error||picksRes.error){msg.textContent='O draft online ainda não está preparado no banco. Execute o arquivo SQL de configuração fornecido junto com este site. Detalhe: '+(stateRes.error?.message||picksRes.error?.message);return;}
-  draftState=stateRes.data;draftPicks=picksRes.data||[];window.copaOnlineDraftPicks=draftPicks;window.copaOnlineDraftClubNames=Object.fromEntries(Object.entries(draftClubMap).map(([k,v])=>[k,v.name]));syncDraftPicksIntoLocalRosters();draftPool=Array.isArray(draftState?.player_pool)?draftState.player_pool:[];
+  draftState=stateRes.data;draftPicks=picksRes.data||[];draftPool=Array.isArray(draftState?.player_pool)?draftState.player_pool:[];
   byId('draftStatus').textContent=draftState?.status||'Aguardando configuração';
   byId('draftPickCount').textContent=String(draftPicks.length);
   const order=draftState?.team_order||[]; const current=Number(draftState?.current_pick||0); const clubId=auth.profile?.club_id;
@@ -2568,7 +2472,7 @@ resumeRoundSimulation();
   renderDraftRosterOnClubPage(clubId,myPicks);
   byId('draftAdminPanel').style.display=isDraftAdmin()?'':'none';
   if(isDraftAdmin()&&draftState){byId('draftPoolJson').value=JSON.stringify(draftPool,null,2);byId('draftTeamOrder').value=order.join(',');byId('draftPicksPerTeam').value=17;}
-  renderDraftPool();renderDraftOrder();renderDraftHistory();if(document.querySelector('#times:not(.hidden)')){renderRoster();renderPitch();}
+  renderDraftPool();renderDraftOrder();renderDraftHistory();
  };
  function renderDraftRosterOnClubPage(clubId,picks){
   const root=byId('roster');if(!root||!document.querySelector('#times:not(.hidden)'))return;
@@ -2589,31 +2493,6 @@ resumeRoundSimulation();
  function renderDraftHistory(){const root=byId('draftHistory');if(!root)return;root.innerHTML=draftPicks.length?[...draftPicks].reverse().map(p=>{const c=draftClubMap[String(p.club_id)]||{name:p.club_id};return `<div class="fm-info-line"><span><strong>#${p.pick_number}</strong> ${escDraft(p.player_name)}<small style="display:block;color:var(--muted)">${escDraft(p.position||'')} · OVR ${escDraft(p.overall??'—')}</small></span><b style="display:flex;align-items:center;gap:6px">${typeof clubCrest==='function'?clubCrest(c.name,'','crest-inline'):''}${escDraft(c.name)}</b></div>`;}).join(''):'<div class="empty">Nenhuma escolha registrada ainda.</div>';}
  window.makeDraftPick=async function(playerId){const auth=draftAuth();if(!auth?.supabase)return alert('Entre na sua conta primeiro.');const p=draftPool.find(x=>String(x.id)===String(playerId));if(!p)return; if(!confirm('Confirmar escolha de '+p.name+'? Essa ação ficará registrada no draft online.'))return;const {data,error}=await auth.supabase.rpc('draft_pick_player',{p_player_id:String(p.id)});if(error){alert('Não foi possível registrar a escolha: '+error.message);return;}await loadOnlineDraft();};
  window.saveDraftConfig=async function(){const auth=draftAuth();if(!isDraftAdmin()||!auth?.supabase)return alert('Somente o administrador pode configurar o draft.');if(draftPicks.length){byId('draftAdminMessage').textContent='Já existem escolhas registradas. Para preservar o histórico, a configuração não pode ser reiniciada por este botão.';return;}let pool,order;try{pool=JSON.parse(byId('draftPoolJson').value);if(!Array.isArray(pool)||pool.some(p=>!p.id||!p.name))throw new Error('Lista precisa ser um array JSON com id e name em cada jogador.');order=byId('draftTeamOrder').value.split(',').map(x=>x.trim()).filter(Boolean);if(order.length<2||new Set(order).size!==order.length)throw new Error('Informe pelo menos dois IDs de clubes, sem repetição.');}catch(e){byId('draftAdminMessage').textContent='Confira os dados: '+e.message;return;}const picks=17;const payload={id:1,status:'paused',team_order:order,player_pool:pool,current_pick:0,picks_per_team:picks,turn_duration_seconds:10800,turn_started_at:new Date().toISOString(),updated_by:auth.user?.id||null,updated_at:new Date().toISOString()};const {error}=await auth.supabase.from('draft_sessions').upsert(payload,{onConflict:'id'});byId('draftAdminMessage').textContent=error?'Erro ao salvar: '+error.message:'Configuração salva e draft pausado. Clique em Iniciar / retomar quando estiver pronto.';if(!error)await loadOnlineDraft();};
- window.resetOnlineDraft=async function(){
-  const auth=draftAuth();if(!isDraftAdmin()||!auth?.supabase)return alert('Somente o administrador pode resetar o draft.');
-  if(!confirm('RESETAR O DRAFT? Todas as escolhas e o histórico serão apagados. Clubes, contas, jogadores e ordem serão mantidos. O draft ficará pausado.'))return;
-  const msg=byId('draftAdminMessage');msg.textContent='Resetando draft…';
-  const {data,error}=await auth.supabase.rpc('draft_admin_reset');
-  if(error){msg.textContent='Não foi possível resetar. Execute primeiro o arquivo SQL de atualização incluído no pacote. Detalhe: '+error.message;return;}
-  window.copaOnlineDraftPicks=[];syncDraftPicksIntoLocalRosters();msg.textContent='Draft resetado e pausado. A lista de jogadores e os clubes foram mantidos.';await loadOnlineDraft();
- };
- window.addAdminMarketPlayer=async function(event){
-  event.preventDefault();const auth=draftAuth();const msg=byId('adminNewPlayerMessage');
-  if(!isDraftAdmin()||!auth?.supabase){msg.textContent='Somente o administrador pode cadastrar jogadores.';return;}
-  const name=byId('newMarketPlayerName').value.trim(),position=byId('newMarketPlayerPosition').value,overall=Number(byId('newMarketPlayerOverall').value);
-  if(!name||!position||!Number.isInteger(overall)||overall<1||overall>99){msg.textContent='Confira nome, posição e overall.';return;}
-  msg.textContent='Cadastrando jogador…';
-  const {data,error}=await auth.supabase.from('market_players').insert({name,position,overall,minimum_price:overall>=89?20:10,status:'available'}).select('id,name,position,overall,minimum_price,status').single();
-  if(error){msg.textContent='Erro ao cadastrar: '+error.message;return;}
-  const session=await auth.supabase.from('draft_sessions').select('player_pool').eq('id',1).maybeSingle();
-  if(session.error){msg.textContent='Jogador cadastrado no catálogo, mas não consegui atualizar a lista do draft: '+session.error.message;return;}
-  const pool=Array.isArray(session.data?.player_pool)?session.data.player_pool:[];
-  const item={id:String(data.id),name:data.name,position:data.position,overall:Number(data.overall)};
-  if(!pool.some(p=>String(p.id)===item.id))pool.push(item);
-  const update=await auth.supabase.from('draft_sessions').update({player_pool:pool,updated_by:auth.user?.id||null,updated_at:new Date().toISOString()}).eq('id',1);
-  if(update.error){msg.textContent='Jogador cadastrado no catálogo, mas não entrou na lista do draft: '+update.error.message;return;}
-  byId('adminNewPlayerForm').reset();byId('newMarketPlayerOverall').value='75';msg.textContent='Jogador cadastrado e adicionado à lista do draft. Ele também está na tabela do mercado para uso futuro.';await loadOnlineDraft();
- };
  window.setDraftStatus=async function(status){const auth=draftAuth();if(!isDraftAdmin()||!auth?.supabase)return alert('Somente o administrador pode alterar o status.');const patch={status,updated_by:auth.user?.id||null,updated_at:new Date().toISOString()};if(status==='active')patch.turn_started_at=new Date().toISOString();const {error}=await auth.supabase.from('draft_sessions').update(patch).eq('id',1);byId('draftAdminMessage').textContent=error?'Erro: '+error.message:'Status atualizado: '+status;if(!error)await loadOnlineDraft();};
  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&document.querySelector('#draft:not(.hidden)'))loadOnlineDraft();});
  setInterval(()=>{const el=byId('draftDeadline');if(!el?.dataset.deadline)return;const ms=Number(el.dataset.deadline)-Date.now();if(ms<=0){el.textContent='Prazo encerrado — sincronizando o próximo turno…';if(document.querySelector('#draft:not(.hidden)'))loadOnlineDraft();return;}const h=Math.floor(ms/3600000),m=Math.floor(ms%3600000/60000),sec=Math.floor(ms%60000/1000);el.textContent='Tempo restante: '+String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');},1000);
