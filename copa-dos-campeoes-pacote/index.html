@@ -1654,15 +1654,46 @@ function teamForClubId(clubId){
 function syncDraftPicksIntoLocalRosters(){
  const picks=Array.isArray(window.copaOnlineDraftPicks)?window.copaOnlineDraftPicks:[];
  const clubNames={"barcelona":"Barcelona","real-madrid":"Real Madrid","bayern-de-munique":"Bayern de Munique","borussia-dortmund":"Borussia Dortmund","chelsea":"Chelsea","arsenal":"Arsenal","manchester-city":"Manchester City","manchester-united":"Manchester United","psg":"PSG","liverpool":"Liverpool"};
- for(const team of (db.teams||[])) team.players=(team.players||[]).filter(p=>!p.onlineDraftPick);
+ const normalizeName=value=>String(value||"").trim().toLocaleLowerCase("pt-BR").normalize("NFD").replace(/[\\u0300-\\u036f]/g,"");
+ // Remove only previous temporary mirrors; then deduplicate existing local rosters by player name.
+ for(const team of (db.teams||[])){
+   const seen=new Set();
+   team.players=(team.players||[]).filter(p=>{
+     if(p.onlineDraftPick)return false;
+     const key=normalizeName(p.name);
+     if(!key)return true;
+     if(seen.has(key))return false;
+     seen.add(key);
+     return true;
+   });
+ }
  for(const pick of picks){
    const clubId=String(pick.club_id||'').toLowerCase();
    const teamName=clubNames[clubId] || (window.copaOnlineDraftClubNames||{})[String(pick.club_id)] || '';
-   const team=(db.teams||[]).find(t=>String(t.id)===String(pick.club_id) || t.name===teamName);
+   const team=(db.teams||[]).find(t=>String(t.id)===String(pick.club_id) || normalizeName(t.name)===normalizeName(teamName));
    if(!team) continue;
    team.players=team.players||[];
-   const pid='draft:'+String(pick.player_id);
-   if(!team.players.some(p=>String(p.id)===pid)) team.players.push({id:pid,name:pick.player_name,position:pick.position||'—',overall:String(pick.overall??''),onlineDraftPick:true});
+   const playerName=String(pick.player_name||"").trim();
+   if(!playerName)continue;
+   const key=normalizeName(playerName);
+   // If the player already exists in the club's normal roster, reuse that entry instead of adding a duplicate.
+   const existing=team.players.find(p=>normalizeName(p.name)===key);
+   if(existing){
+     existing.position=existing.position||pick.position||'—';
+     existing.overall=existing.overall??String(pick.overall??'');
+     existing.draftPick=true;
+     existing.draftPickId=pick.id;
+     continue;
+   }
+   team.players.push({
+     id:'draft:'+String(pick.player_id),
+     name:playerName,
+     position:pick.position||'—',
+     overall:String(pick.overall??''),
+     onlineDraftPick:true,
+     draftPick:true,
+     draftPickId:pick.id
+   });
  }
  try{persist();}catch(e){console.warn('Não foi possível persistir o espelhamento do draft:',e);}
 }
