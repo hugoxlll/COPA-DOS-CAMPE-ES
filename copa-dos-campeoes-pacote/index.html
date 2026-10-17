@@ -1231,8 +1231,17 @@ function persist(){
   try{
     localStorage.setItem(APPKEY,JSON.stringify(db));
     localStorage.setItem(KEY,JSON.stringify(db.teams));
+  }catch(e){
+    console.error("Falha real ao gravar no armazenamento local:",e);
+    alert("Não foi possível gravar os dados no navegador. Exporte um backup e confira o armazenamento disponível.");
+    return;
+  }
+  try{
     updateAll();
-  }catch(e){alert("Não foi possível salvar. Verifique o espaço disponível no navegador.");}
+  }catch(e){
+    console.error("Os dados foram gravados, mas a interface falhou ao atualizar:",e);
+    alert("Os dados foram salvos, mas uma parte da tela não atualizou. Consulte o Console.");
+  }
 }
 
 const CLUB_CRESTS = {
@@ -2194,33 +2203,16 @@ function renderFootballManagerRail(){
  const next=document.getElementById("fmNextMatch");if(next)next.innerHTML='<div style="font-weight:700;color:#e8f2ff">Aguardando calendário</div><div style="font-size:12px;margin-top:5px">Os confrontos cadastrados aparecerão aqui.</div>';
 }
 
-// Compatibilidade para a chamada de updateAll().
-// Esta versão não contém uma implementação de loadOnlineFreeCatalog; não inventa dados.
-// O mercado online permanece responsável por carregar seu catálogo quando houver implementação.
-if(typeof window.loadOnlineFreeCatalog !== "function"){
-  window.loadOnlineFreeCatalog = async function(){
-    console.warn("Catálogo online de jogadores livres ainda não possui carregador nesta versão.");
-    return;
-  };
-}
-function loadOnlineFreeCatalog(){
-  return window.loadOnlineFreeCatalog();
-}
-
-
 function renderPlayerCatalog(){
-  const root=document.getElementById("playerCatalog");
-  if(!root)return;
-  if(typeof OFFICIAL_PLAYER_POOL==="undefined" || !Array.isArray(OFFICIAL_PLAYER_POOL)){
-    root.innerHTML='<div class="empty">Catálogo local indisponível nesta versão.</div>';
-    return;
-  }
-  root.innerHTML=OFFICIAL_PLAYER_POOL.length
-    ? OFFICIAL_PLAYER_POOL.map(p=>`<div class="catalog-player-row"><strong>${escapeHTML(p.name||"Jogador")}</strong><div class="muted">${escapeHTML(p.position||"A definir")} · OVR ${escapeHTML(String(p.overall??"—"))}</div></div>`).join("")
-    : '<div class="empty">Nenhum jogador no catálogo local.</div>';
+ const root=document.getElementById("playerCatalog");
+ if(!root) return;
+ const pool=Array.isArray(OFFICIAL_PLAYER_POOL)?OFFICIAL_PLAYER_POOL:[];
+ root.innerHTML=pool.length
+   ? pool.map(p=>`<div class="catalog-player-row"><div><strong>${escapeHTML(p.name||"Jogador")}</strong><div class="muted">${escapeHTML(p.position||"A definir")} · OVR ${escapeHTML(String(p.overall??"—"))}</div></div></div>`).join("")
+   : '<div class="empty">Nenhum jogador no catálogo local.</div>';
 }
 
-function updateAll(){fillTeamSelects();renderPitch();renderHome();renderHomeMatches();renderRoster();renderPlayerCatalog();if(window.copaAuth?.supabase)loadOnlineFreeCatalog();renderMatches();renderStandings();renderCalendar();renderCoachAdmin();renderCompetitionStats();renderFootballManagerRail();}
+function updateAll(){fillTeamSelects();renderPitch();renderHome();renderHomeMatches();renderRoster();renderPlayerCatalog();renderMatches();renderStandings();renderCalendar();renderCoachAdmin();renderCompetitionStats();renderFootballManagerRail();}
 
 document.getElementById("formationPreview").addEventListener("change",e=>{const t=selectedTeam();if(!t)return;lineupFor(t).formation=e.target.value;markLineupDirty();renderPitch();});
 document.getElementById("seasonStart").value=new Date().toISOString().slice(0,10);
