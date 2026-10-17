@@ -1231,8 +1231,17 @@ function persist(){
   try{
     localStorage.setItem(APPKEY,JSON.stringify(db));
     localStorage.setItem(KEY,JSON.stringify(db.teams));
+  }catch(e){
+    console.error("Falha real ao gravar dados no armazenamento local:",e);
+    alert("Não foi possível gravar os dados no navegador. Exporte um backup e confira o armazenamento disponível.");
+    return;
+  }
+  try{
     updateAll();
-  }catch(e){alert("Não foi possível salvar. Verifique o espaço disponível no navegador.");}
+  }catch(e){
+    console.error("Os dados foram gravados, mas houve erro ao atualizar a interface:",e);
+    alert("Os dados foram salvos, mas uma parte da tela não atualizou. Veja o Console para identificar o componente.");
+  }
 }
 
 const CLUB_CRESTS = {
@@ -2134,6 +2143,9 @@ function renderStandings(){
 function renderHomeMatches(){
   const upcoming=document.getElementById("homeUpcoming");
   const results=document.getElementById("homeResults");
+  // Algumas versões da página não possuem o bloco de próximas partidas.
+  // Não interrompe as outras renderizações se esse elemento estiver ausente.
+  if(!upcoming && !results) return;
   const club=(id)=>db.teams.find(t=>t.id===id);
   const card=(m)=> {
     const h=club(m.home), a=club(m.away);
@@ -2147,9 +2159,9 @@ function renderHomeMatches(){
       </div>
     </div>`;
   };
-  upcoming.innerHTML='<div class="empty">Nenhuma próxima partida foi agendada ainda.</div>';
-  const recent=[...db.matches].reverse().slice(0,3);
-  results.innerHTML=recent.length?recent.map(card).join(""):'<div class="empty">Ainda não há resultados registrados.</div>';
+  if(upcoming) upcoming.innerHTML='<div class="empty">Nenhuma próxima partida foi agendada ainda.</div>';
+  const recent=[...(db.matches||[])].reverse().slice(0,3);
+  if(results) results.innerHTML=recent.length?recent.map(card).join(""):'<div class="empty">Ainda não há resultados registrados.</div>';
 }
 function exportBackup(){
  const payload={app:"Copa dos Campeões 2026",version:1,exportedAt:new Date().toISOString(),data:db};
