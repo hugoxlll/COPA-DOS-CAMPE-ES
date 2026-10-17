@@ -2286,6 +2286,7 @@ resumeRoundSimulation();
    if(profile.role!=="admin" && !profile.club_id){document.querySelectorAll('#nav button[data-page="times"]').forEach(b=>b.disabled=true);}
    else {document.querySelectorAll('#nav button[data-page="times"]').forEach(b=>b.disabled=false);}
    updateAll();
+   if(document.querySelector('#draft:not(.hidden)')) window.loadOnlineDraft?.();
  }
  form.addEventListener('submit', async e => {
    e.preventDefault(); say('Entrando…');
@@ -2450,15 +2451,30 @@ input,select,textarea{background:#050a12!important;border-color:#174a7d!importan
   const auth=draftAuth(); if(!auth?.supabase){msg.textContent='Faça login para acessar o draft online.';return;}
   msg.textContent='Sincronizando com o Supabase…';
   // O banco decide se o prazo venceu e avança o turno; o navegador apenas exibe o resultado.
-  await auth.supabase.rpc('draft_sync_turn');
+  // A sincronização do turno pode falhar por permissão/RPC ausente; ainda assim tentamos ler a sessão.
+  const syncRes = await auth.supabase.rpc('draft_sync_turn');
+  if(syncRes.error) console.warn('Sincronização automática do draft:',syncRes.error.message);
   const [stateRes,picksRes,clubsRes]=await Promise.all([
    auth.supabase.from('draft_sessions').select('id,status,team_order,player_pool,current_pick,picks_per_team,turn_started_at,turn_duration_seconds,updated_at').eq('id',1).maybeSingle(),
    auth.supabase.from('draft_picks').select('id,pick_number,club_id,player_id,player_name,position,overall,created_at').order('pick_number',{ascending:true}),
    auth.supabase.from('clubs').select('id,name')
   ]);
   if(!clubsRes.error&&Array.isArray(clubsRes.data)){draftClubMap={};clubsRes.data.forEach(c=>draftClubMap[String(c.id)]={name:c.name,id:String(c.id)});}
-  if(stateRes.error||picksRes.error){msg.textContent='O draft online ainda não está preparado no banco. Execute o arquivo SQL de configuração fornecido junto com este site. Detalhe: '+(stateRes.error?.message||picksRes.error?.message);return;}
-  draftState=stateRes.data;draftPicks=picksRes.data||[];draftPool=Array.isArray(draftState?.player_pool)?draftState.player_pool:[];
+  if(stateRes.error||picksRes.error){msg.textContent='Falha ao consultar o draft no Supabase: '+(stateRes.error?.message||picksRes.error?.message);return;}
+  if(!stateRes.data){
+   draftState=null;draftPicks=picksRes.data||[];draftPool=[];
+   byId('draftStatus').textContent='Sessão não encontrada';
+   byId('draftTurnInfo').textContent='O navegador não recebeu a sessão de ID 1. Se ela existe no Table Editor, confira a política SELECT (RLS) de draft_sessions para usuários autenticados.';
+   byId('draftDeadline').textContent='Prazo do turno: —';
+   byId('draftMyClub').textContent=auth.profile?.club_id?(auth.profile.club_name||'Clube vinculado'):'Sem clube';
+   byId('draftMyPick').textContent='Aguardando acesso à sessão do draft.';
+   byId('draftPickCount').textContent=String(draftPicks.length);
+   byId('draftAdminPanel').style.display=isDraftAdmin()?'':'none';
+   renderDraftPool();renderDraftOrder();renderDraftHistory();
+   msg.textContent='A sessão existe no projeto, mas não foi retornada pela consulta. Verifique a política RLS de leitura da tabela draft_sessions.';
+   return;
+  }
+  draftState=stateRes.data;draftPicks=picksRes.data||[];draftPool=Array.isArray(draftState.player_pool)?draftState.player_pool:[];
   byId('draftStatus').textContent=draftState?.status||'Aguardando configuração';
   byId('draftPickCount').textContent=String(draftPicks.length);
   const order=draftState?.team_order||[]; const current=Number(draftState?.current_pick||0); const clubId=auth.profile?.club_id;
