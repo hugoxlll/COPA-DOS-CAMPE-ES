@@ -2420,6 +2420,120 @@ resumeRoundSimulation();
 @media(max-width:420px){#times #benchList{grid-template-columns:minmax(0,1fr)!important}}
 </style>
 
+
+<style id="copa-bench-next-to-pitch">
+/* Layout simples: campo e banco visíveis lado a lado em telas grandes */
+#times .pitch-panel{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(250px,300px)!important;
+  grid-template-rows:auto minmax(0,1fr) auto auto auto!important;
+  column-gap:16px!important;
+  row-gap:12px!important;
+  align-items:start!important;
+}
+#times .pitch-toolbar{
+  grid-column:1 / -1!important;
+  grid-row:1!important;
+  width:100%!important;
+}
+#times #tacticalPitch{
+  grid-column:1!important;
+  grid-row:2!important;
+  min-width:0!important;
+  width:100%!important;
+}
+#times .pitch-caption{
+  grid-column:1!important;
+  grid-row:3!important;
+  min-width:0!important;
+}
+#times .fm-club-rail{
+  grid-column:2!important;
+  grid-row:2!important;
+  width:100%!important;
+  min-width:0!important;
+  order:initial!important;
+}
+#times .pitch-panel>.section-heading[style*="margin-top:14px"]{
+  grid-column:2!important;
+  grid-row:3!important;
+  margin:0!important;
+  align-self:end!important;
+}
+#times #benchList{
+  grid-column:2!important;
+  grid-row:4!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:8px!important;
+  width:100%!important;
+  min-width:0!important;
+  max-height:440px!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  padding:2px 4px 2px 0!important;
+  box-sizing:border-box!important;
+  align-content:start!important;
+}
+#times #benchList .bench-card{
+  width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  flex-wrap:nowrap!important;
+  padding:8px!important;
+}
+#times #benchList .bench-board{
+  min-width:0!important;
+  max-width:none!important;
+  flex:1 1 auto!important;
+}
+#times #benchList .bench-board-name{
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+}
+#times .pitch-help,
+#times .pitch-panel>.row{
+  grid-column:1 / -1!important;
+  grid-row:auto!important;
+  width:100%!important;
+}
+#times #benchList .bench-card button{
+  flex:0 0 auto!important;
+  white-space:nowrap!important;
+}
+@media(max-width:900px){
+  #times .pitch-panel{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:12px!important;
+  }
+  #times .pitch-toolbar,
+  #times #tacticalPitch,
+  #times .pitch-caption,
+  #times .fm-club-rail,
+  #times .pitch-panel>.section-heading[style*="margin-top:14px"],
+  #times #benchList,
+  #times .pitch-help,
+  #times .pitch-panel>.row{
+    width:100%!important;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    order:initial!important;
+    box-sizing:border-box!important;
+  }
+  #times #benchList{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+  #times #benchList .bench-card{flex-wrap:wrap!important}
+}
+@media(max-width:440px){
+  #times #benchList{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
+
 <script>
 (function(){
  const escDraft=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
