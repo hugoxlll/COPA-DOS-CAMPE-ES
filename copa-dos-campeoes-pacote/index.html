@@ -1231,17 +1231,8 @@ function persist(){
   try{
     localStorage.setItem(APPKEY,JSON.stringify(db));
     localStorage.setItem(KEY,JSON.stringify(db.teams));
-  }catch(e){
-    console.error("Falha ao gravar dados no armazenamento local:",e);
-    alert("Não foi possível gravar os dados no navegador. Confira o armazenamento disponível.");
-    return;
-  }
-  try{
     updateAll();
-  }catch(e){
-    console.error("Os dados foram gravados, mas houve erro ao atualizar a interface:",e);
-    alert("Os dados foram salvos, mas uma parte da tela não atualizou. Veja o Console para identificar o componente.");
-  }
+  }catch(e){alert("Não foi possível salvar. Verifique o espaço disponível no navegador.");}
 }
 
 const CLUB_CRESTS = {
@@ -1635,23 +1626,6 @@ function releasePlayer(tid,pid){
  const exists=OFFICIAL_PLAYER_POOL.some(x=>x.name.toLocaleLowerCase('pt-BR')===p.name.toLocaleLowerCase('pt-BR'));
  if(!exists){const pos=normalizePosition(p.position)||'MC';OFFICIAL_PLAYER_POOL.push({name:p.name,overall:Number(p.overall)||0,position:pos,positions:[pos],price:(Number(p.overall)||0)>=89?20:10});}
  persist();renderRoster();renderPlayerCatalog();
-}
-
-
-// Compatibilidade: versões anteriores chamam esta função ao atualizar a tela.
-// O catálogo online é carregado por loadOnlineFreeCatalog() quando a autenticação está pronta.
-// Não há um contêiner de catálogo local nesta versão, então não faça nada se ele não existir.
-function renderPlayerCatalog(){
-  const catalogRoot = document.getElementById("playerCatalog");
-  if(!catalogRoot) return;
-  if(typeof OFFICIAL_PLAYER_POOL === "undefined") {
-    catalogRoot.innerHTML = '<div class="empty">Catálogo de jogadores será carregado quando estiver disponível.</div>';
-    return;
-  }
-  const pool = Array.isArray(OFFICIAL_PLAYER_POOL) ? OFFICIAL_PLAYER_POOL : [];
-  catalogRoot.innerHTML = pool.length
-    ? pool.map((p,i)=>`<div class="catalog-player-row"><div><strong>${escapeHTML(p.name||"Jogador")}</strong><div class="muted">${escapeHTML(p.position||"A definir")} · OVR ${escapeHTML(String(p.overall??"—"))}</div></div></div>`).join("")
-    : '<div class="empty">Nenhum jogador no catálogo local.</div>';
 }
 
 
@@ -2160,6 +2134,9 @@ function renderStandings(){
 function renderHomeMatches(){
   const upcoming=document.getElementById("homeUpcoming");
   const results=document.getElementById("homeResults");
+  // A página pode não ter os blocos de partidas da tela inicial.
+  // Se ambos estiverem ausentes, não há nada para renderizar.
+  if(!upcoming && !results) return;
   const club=(id)=>db.teams.find(t=>t.id===id);
   const card=(m)=> {
     const h=club(m.home), a=club(m.away);
@@ -2173,9 +2150,9 @@ function renderHomeMatches(){
       </div>
     </div>`;
   };
-  upcoming.innerHTML='<div class="empty">Nenhuma próxima partida foi agendada ainda.</div>';
-  const recent=[...db.matches].reverse().slice(0,3);
-  results.innerHTML=recent.length?recent.map(card).join(""):'<div class="empty">Ainda não há resultados registrados.</div>';
+  if(upcoming) upcoming.innerHTML='<div class="empty">Nenhuma próxima partida foi agendada ainda.</div>';
+  const recent=[...(db.matches||[])].reverse().slice(0,3);
+  if(results) results.innerHTML=recent.length?recent.map(card).join(""):'<div class="empty">Ainda não há resultados registrados.</div>';
 }
 function exportBackup(){
  const payload={app:"Copa dos Campeões 2026",version:1,exportedAt:new Date().toISOString(),data:db};
